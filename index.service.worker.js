@@ -4,12 +4,12 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1791897926|60512744';
+const CACHE_VERSION = '1791899384|84479192';
 /** @type {string} */
 const CACHE_PREFIX = 'UapeaniBot-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 // Motor en caché propio (nombre = su contenido): sobrevive a las actualizaciones del juego.
-const ENGINE_CACHE = CACHE_PREFIX + 'engine-fc74679e3b97f768';
+const ENGINE_CACHE = CACHE_PREFIX + 'engine-7bd95e011aef19f7';
 function cacheFor(name) { return caches.open(name === 'index.wasm' ? ENGINE_CACHE : CACHE_NAME); }
 /** @type {string} */
 const OFFLINE_URL = 'index.offline.html';
