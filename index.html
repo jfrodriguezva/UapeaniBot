@@ -8,6 +8,18 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 		<title>UapeaniBot</title>
+<script>
+(function () {
+	var real = window.devicePixelRatio || 1;
+	window.ubotRealDpr = real;
+	var cap = 1.5;
+	try { if (localStorage.getItem("ubot_nitida") === "1") { cap = 8; } } catch (e) {}
+	if (real > cap) {
+		Object.defineProperty(window, "devicePixelRatio", { get: function () { return cap; }, configurable: true });
+	}
+})();
+</script>
+
 		<style>
 html, body, #canvas {
 	margin: 0;
@@ -117,7 +129,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":4549948,"index.wasm":22536503},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":4907792,"index.wasm":22536503},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
