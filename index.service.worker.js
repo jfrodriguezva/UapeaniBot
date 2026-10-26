@@ -4,14 +4,14 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1792685437|3358369';
+const CACHE_VERSION = '1793025280|4661005';
 /** @type {string} */
 const CACHE_PREFIX = 'UapeaniBot-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 // Motor en caché propio (nombre = su contenido): sobrevive a las actualizaciones del juego.
 const ENGINE_CACHE = CACHE_PREFIX + 'engine-7bd95e011aef19f7';
 // La música de los niveles, igual: su propio caché.
-const MUSIC_CACHE = CACHE_PREFIX + 'music-6e9db5b81e85ad01';
+const MUSIC_CACHE = CACHE_PREFIX + 'music-558b6a1085e7b08e';
 function cacheFor(name) { return caches.open(name === 'index.wasm' ? ENGINE_CACHE : (name === 'musica.pck' ? MUSIC_CACHE : CACHE_NAME)); }
 /** @type {string} */
 const OFFLINE_URL = 'index.offline.html';
