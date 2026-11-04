@@ -4,15 +4,15 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1793642103|235617036';
+const CACHE_VERSION = '1793758003|49977685';
 /** @type {string} */
 const CACHE_PREFIX = 'UapeaniBot-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 // Motor en caché propio (nombre = su contenido): sobrevive a las actualizaciones del juego.
 const ENGINE_CACHE = CACHE_PREFIX + 'engine-7bd95e011aef19f7';
-// La música de los niveles, igual: su propio caché.
-const MUSIC_CACHE = CACHE_PREFIX + 'music-558b6a1085e7b08e';
-function cacheFor(name) { return caches.open(name === 'index.wasm' ? ENGINE_CACHE : (name === 'musica.pck' ? MUSIC_CACHE : CACHE_NAME)); }
+// La música de los niveles (una canción por paquete), igual: su propio caché.
+const MUSIC_CACHE = CACHE_PREFIX + 'music-b85dca7ff957fa41';
+function cacheFor(name) { return caches.open(name === 'index.wasm' ? ENGINE_CACHE : (name.startsWith('musica/') ? MUSIC_CACHE : CACHE_NAME)); }
 /** @type {string} */
 const OFFLINE_URL = 'index.offline.html';
 /** @type {boolean} */
@@ -104,7 +104,7 @@ self.addEventListener(
 		const referrer = event.request.referrer || '';
 		const base = referrer.slice(0, referrer.lastIndexOf('/') + 1);
 		const local = url.startsWith(base) ? url.replace(base, '') : '';
-		const isCacheable = FULL_CACHE.some((v) => v === local) || local === 'musica.pck' || (base === referrer && base.endsWith(CACHED_FILES[0]));
+		const isCacheable = FULL_CACHE.some((v) => v === local) || local.startsWith('musica/') || (base === referrer && base.endsWith(CACHED_FILES[0]));
 		if (isNavigate || isCacheable) {
 			event.respondWith((async () => {
 				// Try to use cache first
